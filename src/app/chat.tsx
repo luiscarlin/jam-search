@@ -1,4 +1,5 @@
 "use client";
+
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -24,9 +25,7 @@ export function Chat({ handler }: { handler: any }) {
           onChange={handleInputChange}
           autoFocus
         />
-        <Button type="submit" className="bg-black text-white rounded px-4">
-          Send
-        </Button>
+        <Button type="submit">Send</Button>
       </form>
       <ul>
         {messages.map((m, index) => (
