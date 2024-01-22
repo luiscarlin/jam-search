@@ -1,4 +1,5 @@
 "use client";
+
 import Image from "next/image";
 import {
   Card,
@@ -6,13 +7,19 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-  CardFooter,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { buttonVariants } from "@/components/ui/button";
 
-import { useAlbumsContext } from "./AlbumProvider";
-import type { AlbumInfo } from "./AlbumProvider";
+type AlbumProps = {
+  url: string;
+  image: {
+    url: string;
+    width: number;
+    height: number;
+  };
+  name: string;
+  artist: string;
+  release_date: string;
+};
 
 export default function Album({
   url,
@@ -20,24 +27,7 @@ export default function Album({
   name,
   artist,
   release_date,
-  allowAdd,
-}: AlbumInfo & {
-  allowAdd?: boolean;
-}) {
-  const albums = useAlbumsContext();
-  const onAdd = () => {
-    albums[1]((prev) => [
-      ...prev,
-      {
-        url,
-        image,
-        name,
-        artist,
-        release_date,
-      },
-    ]);
-  };
-
+}: AlbumProps) {
   return (
     <Card className="rounded-xl">
       <CardHeader>
@@ -56,18 +46,6 @@ export default function Album({
           />
         </a>
       </CardContent>
-      <CardFooter className="flex justify-end">
-        {allowAdd && (
-          <Button
-            onClick={onAdd}
-            className={buttonVariants({
-              variant: "secondary",
-            })}
-          >
-            Add To Saved Albums
-          </Button>
-        )}
-      </CardFooter>
     </Card>
   );
 }

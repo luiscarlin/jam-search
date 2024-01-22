@@ -37,7 +37,7 @@ export async function handler({ messages }: { messages: Message[] }) {
       role: m.role as "user" | "assistant",
       content:
         m.role === "user"
-          ? `bullet list in the format "- album - artist (year)" of three music albums from 1970-2000 with beautiful album covers in the theme of "${m.content}"`
+          ? `bullet list in the format "- album - artist (year)" of three music albums from 1970-2000 in the theme of "${m.content}"`
           : m.content,
     })),
   });
@@ -63,7 +63,7 @@ export async function handler({ messages }: { messages: Message[] }) {
             .filter((album) => album?.image?.url)
             .map((album) => (
               <div key={`${album.artist}-${album.name}`} className="p-1">
-                <Album {...album} allowAdd={true} />
+                <Album {...album} />
               </div>
             ))}
         </div>
