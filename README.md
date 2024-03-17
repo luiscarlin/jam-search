@@ -1,6 +1,6 @@
 # Jam Search
 
-Generate a Spotify playlist using openai from a keyword
+Website that generates a Spotify playlist based on a provided theme
 
 ## Tech used
 
